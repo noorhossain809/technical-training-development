@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Include Tailwind CSS (you should link to the actual Tailwind CSS file) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Include Font Awesome CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Apply gradient background to sidebar */
+      .sidebar {
+        background: linear-gradient(
+          to right,
+          #083a66,
+          #1f68a9
+        ); /* Adjust colors as needed */
+      }
+      .sidebar a:hover {
+        background-color: white !important;
+        color: #38bdf8 !important; /* Use the actual sky blue color code */
+      }
+      .sidebar button:hover {
+        background-color: white !important;
+        color: #38bdf8 !important; /* Use the actual sky blue color code */
+      }
+      .card-bg {
+        background-color: #2d84d0;
+      }
+      button {
+        background-color: #2d84d0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Sidebar -->
+    <div
+      class="sidebar text-white h-screen w-64 py-6 fixed top-0 left-0 overflow-y-auto"
+    >
+      <ul class="text-center mt-32">
+        <li class="mb-4">
+          <a
+            href="dashboard.html"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Control Panel.svg"
+                alt=""
+              />
+              <span>Dashboard</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a
+            href="profile.html"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img class="w-8 h-8 text-white" src="./images/User.svg" alt="" />
+              <span>Profile</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <!-- Student dropdown -->
+          <div x-data="{ isOpen: false }">
+            <button
+              @click="isOpen = !isOpen"
+              class="block py-2 px-4 w-48 mx-auto rounded-md font-[Inter] font-medium text-xl cursor-pointer"
+            >
+              <div class="flex space-x-4">
+                <img
+                  class="w-8 h-8 text-white"
+                  src="./images/Student Male.svg"
+                  alt=""
+                />
+                <span
+                  >Student <i class="fas fa-chevron-down ml-2 mt-2"></i
+                ></span>
+              </div>
+            </button>
+            <ul x-show="isOpen" @click.away="isOpen = false" class="ml-4">
+              <li class="mb-2">
+                <a
+                  href="studentAdd.html"
+                  class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-sm"
+                >
+                  <div class="flex space-x-2">
+                    <img
+                      class="w-4 h-4 text-white"
+                      src="./images/Signing A Document.svg"
+                      alt=""
+                    />
+                    <span>Registration Add</span>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-2">
+                <a
+                  href="studentList.html"
+                  class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-sm"
+                >
+                  <div class="flex space-x-2">
+                    <img
+                      class="w-4 h-4 text-white"
+                      src="./images/Auditorium-small.svg"
+                      alt=""
+                    />
+                    <span>Student List</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-4">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Test Passed (1).svg"
+                alt=""
+              />
+              <span>Result</span>
+            </div>
+          </a>
+        </li>
+        <li class="mt-16">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-normal text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Account.svg"
+                alt=""
+              />
+              <span>2062</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-normal text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Logout Rounded.svg"
+                alt=""
+              />
+              <span>Logout</span>
+            </div>
+          </a>
+        </li>
+        <!-- Add more sidebar items as needed -->
+      </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="ml-64">
+      <div class="bg-white p-6">
+        <h2 class="text-2xl font-semibold mb-4">Student</h2>
+        <!-- Breadcrumbs -->
+        <div class="text-sm breadcrumbs">
+          <ul class="flex space-x-2 text-gray-400">
+            <li>
+              <i class="fa fa-home" aria-hidden="true"></i
+              ><a href="#" class=""> Student List</a>
+            </li>
+            <li>/</li>
+            <li><a href="#" class="hover:underline">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Add your content here -->
+      <div class="bg-gray-100">
+        <div class="p-8">
+          <section class="mt-6 pb-10">
+            <div class="hero-content mx-40">
+              <div
+                class="card w-full shadow-2xl bg-white pb-6 py-16 mt-10 rounded-md"
+              >
+                <div class="mx-28">
+                  <div class="space-y-4 w-full">
+                    <div class="grid md:grid-cols-2 space-x-6 mt-10">
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Session</span
+                          >
+                        </label>
+                        <select
+                          class="select select-primary border border-black border-4 w-full max-w-xs py-2"
+                        >
+                          <option disabled selected>Select Your Session</option>
+                          <option>A+</option>
+                          <option>A-</option>
+                          <option>B+</option>
+                          <option>B-</option>
+                          <option>O+</option>
+                          <option>0-</option>
+                        </select>
+                      </div>
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Course</span
+                          >
+                        </label>
+                        <select
+                          class="select select-primary border border-black border-4 w-full max-w-xs py-2"
+                        >
+                          <option disabled selected>Select Your Courses</option>
+                          <option>A+</option>
+                          <option>A-</option>
+                          <option>B+</option>
+                          <option>B-</option>
+                          <option>O+</option>
+                          <option>0-</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 space-x-6 mt-10">
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Student Name</span
+                          >
+                        </label>
+                        <input
+                          type="text"
+                          placeholder=""
+                          class="input input-bordered w-full py-2 px-8 focus:outline-none focus:border-b-indigo-500 border-b-2 border-black bg-base-200"
+                        />
+                      </div>
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Duration</span
+                          >
+                        </label>
+                        <select
+                          class="select select-primary border border-black border-4 w-full max-w-xs py-2"
+                        >
+                          <option disabled selected>Select Your Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Others</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 space-x-6 mt-10">
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Roll Number</span
+                          >
+                        </label>
+                        <input
+                          type="text"
+                          placeholder=""
+                          class="input input-bordered w-full py-2 px-8 focus:outline-none focus:border-b-indigo-500 border-b-2 border-black bg-base-200"
+                        />
+                      </div>
+                      <div class="form-control mt-2">
+                        <label class="label">
+                          <span
+                            class="label-text font-[Montserrat] font-normal text-base"
+                            >Registration Number</span
+                          >
+                        </label>
+                        <input
+                          type="text"
+                          placeholder=""
+                          class="input input-bordered w-full py-2 px-8 focus:outline-none focus:border-b-indigo-500 border-b-2 border-black bg-base-200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-control mt-6">
+                    <div class="mt-6">
+                      <button
+                        class="btn btn-active my-2 rounded-md text-white text-base py-4 font-[montserrat] capitalize tracking-wide leading-3 font-normal px-6"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"
+      defer
+    ></script>
+  </body>
+</html>

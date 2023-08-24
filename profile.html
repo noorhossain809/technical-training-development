@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Include Tailwind CSS (you should link to the actual Tailwind CSS file) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Include Font Awesome CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Apply gradient background to sidebar */
+      .sidebar {
+        background: linear-gradient(
+          to right,
+          #083a66,
+          #1f68a9
+        ); /* Adjust colors as needed */
+      }
+      .sidebar a:hover {
+        background-color: white !important;
+        color: #38bdf8 !important; /* Use the actual sky blue color code */
+      }
+      .sidebar button:hover {
+        background-color: white !important;
+        color: #38bdf8 !important; /* Use the actual sky blue color code */
+      }
+      .card-bg {
+        background-color: #2d84d0;
+      }
+      p {
+        color: #2d84d0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Sidebar -->
+    <div
+      class="sidebar text-white h-screen w-64 py-6 fixed top-0 left-0 overflow-y-auto"
+    >
+      <ul class="text-center mt-32">
+        <li class="mb-4">
+          <a
+            href="dashboard.html"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Control Panel.svg"
+                alt=""
+              />
+              <span>Dashboard</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a
+            href="profile.html"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img class="w-8 h-8 text-white" src="./images/User.svg" alt="" />
+              <span>Profile</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <!-- Student dropdown -->
+          <div x-data="{ isOpen: false }">
+            <button
+              @click="isOpen = !isOpen"
+              class="block py-2 px-4 w-48 mx-auto rounded-md font-[Inter] font-medium text-xl cursor-pointer"
+            >
+              <div class="flex space-x-4">
+                <img
+                  class="w-8 h-8 text-white"
+                  src="./images/Student Male.svg"
+                  alt=""
+                />
+                <span
+                  >Student <i class="fas fa-chevron-down ml-2 mt-2"></i
+                ></span>
+              </div>
+            </button>
+            <ul x-show="isOpen" @click.away="isOpen = false" class="ml-4">
+              <li class="mb-2">
+                <a
+                  href="studentAdd.html"
+                  class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-sm"
+                >
+                  <div class="flex space-x-2">
+                    <img
+                      class="w-4 h-4 text-white"
+                      src="./images/Signing A Document.svg"
+                      alt=""
+                    />
+                    <span>Registration Add</span>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-2">
+                <a
+                  href="studentList.html"
+                  class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-sm"
+                >
+                  <div class="flex space-x-2">
+                    <img
+                      class="w-4 h-4 text-white"
+                      src="./images/Auditorium-small.svg"
+                      alt=""
+                    />
+                    <span>Student List</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-4">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-medium text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Test Passed (1).svg"
+                alt=""
+              />
+              <span>Result</span>
+            </div>
+          </a>
+        </li>
+        <li class="mt-16">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-normal text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Account.svg"
+                alt=""
+              />
+              <span>2062</span>
+            </div>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a
+            href="#"
+            class="block py-2 px-4 mx-auto w-48 rounded-md font-[Inter] font-normal text-xl"
+          >
+            <div class="flex space-x-4">
+              <img
+                class="w-8 h-8 text-white"
+                src="./images/Logout Rounded.svg"
+                alt=""
+              />
+              <span>Logout</span>
+            </div>
+          </a>
+        </li>
+        <!-- Add more sidebar items as needed -->
+      </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="ml-64">
+      <div class="bg-white p-6">
+        <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+        <!-- Breadcrumbs -->
+        <div class="text-sm breadcrumbs">
+          <ul class="flex space-x-2 text-gray-400">
+            <li>
+              <i class="fa fa-home" aria-hidden="true"></i
+              ><a href="#" class=""> Home</a>
+            </li>
+            <li>/</li>
+            <li><a href="#" class="hover:underline">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Add your content here -->
+      <div class="bg-gray-100">
+        <div class="text-center mt-6 p-8">
+          <div class="grid grid-cols-6 gap-4 space-x-10">
+            <img class="w-72 h-60" src="./images/student.jpg" alt="" />
+            <div class="col-span-5 text-left">
+              <h4 class="font-[Montserrat] font-medium text-base tracking-wide">
+                Medhabikash Technical Institute(1442)
+              </h4>
+              <p
+                class="font-[Montserrat] font-medium tracking-wide text-sm text-sky-500 mt-4"
+              >
+                Managing Director : Md Robin Ahamed
+              </p>
+              <p
+                class="font-[Montserrat] font-medium tracking-wide text-sm text-sky-500 mt-2"
+              >
+                Address : Village:Kalirhat ,Upozilla:Polash,District:Narsingdi
+              </p>
+              <p
+                class="font-[Montserrat] font-medium tracking-wide text-sm text-sky-500 mt-2"
+              >
+                Phone No : 01965656508
+              </p>
+              <p
+                class="font-[Montserrat] font-medium tracking-wide text-sm text-sky-500 mt-2"
+              >
+                Center User ID : 2062
+              </p>
+              <p
+                class="font-[Montserrat] font-medium tracking-wide text-sm text-sky-500 mt-2"
+              >
+                Center Password : 1994Robin
+              </p>
+            </div>
+          </div>
+          <div class="col-span-5 text-left mt-10 space-y-4">
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Medhabikash Technical Institute(1442)
+            </p>
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Managing Director : Md Robin Ahamed
+            </p>
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Address : Village:Kalirhat ,Upozilla:Polash,District:Narsingdi
+            </p>
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Phone No : 01965656508
+            </p>
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Center User ID : 2062
+            </p>
+            <p class="font-[Inter] font-semibold text-xl tracking-wide">
+              Center Password : 1994Robin
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"
+      defer
+    ></script>
+  </body>
+</html>
